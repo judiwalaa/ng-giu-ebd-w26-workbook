@@ -16,27 +16,60 @@
 
 /* TODO: a rule for `body` that sets
  *       font-family, color, and background-color. */
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #f5f5f5;
+}
 
 /* TODO: a rule for `.page` that sets
  *       max-width, and margin (use `0 auto` to centre it). */
+.page {
+  max-width: 800px;
+  margin: 0 auto;
+}
 
 /* TODO: a rule for `header` that sets
  *       display: flex;
  *       justify-content: space-between;
  *       align-items: center;
  *       and one more property of your choosing. */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
 
 /* TODO: a rule for `nav a` — a descendant selector, so it only affects links
  *       inside the nav — that sets
  *       color, and text-decoration. */
+nav a {
+  color: #007bff;
+  text-decoration: none;
+}
 
 /* TODO: a rule for `.card-list` that sets
  *       display: flex;
  *       gap (any size);
  *       flex-wrap: wrap; */
+ .card-list {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
 
 /* TODO: a rule for `.card` that sets
  *       padding, border-radius, and background-color. */
+ .card {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+}
 
 /* TODO: a rule for `.price` that sets
  *       color, and font-weight. */
+.price {
+  color: #ff0000;
+  font-weight: bold;
+}
