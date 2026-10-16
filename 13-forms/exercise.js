@@ -26,7 +26,9 @@
 export function readForm() {
   // TODO: read .value off each input. Trim the name, and convert the price
   // with Number().
-  throw new Error("readForm is not written yet");
+  const name = document.getElementById("name").value.trim();
+  const price = Number(document.getElementById("price").value);
+  return { name, price };
 }
 
 /**
@@ -36,7 +38,8 @@ export function readForm() {
  */
 export function clearForm() {
   // TODO: set each input's .value to an empty string.
-  throw new Error("clearForm is not written yet");
+  document.getElementById("name").value = "";
+  document.getElementById("price").value = "";
 }
 
 /**
@@ -54,7 +57,25 @@ export function clearForm() {
 export function renderList(items) {
   // TODO: empty #list first, then build one card per item — the same card
   // shape as module 12.
-  throw new Error("renderList is not written yet");
+  const list = document.getElementById("list");
+  list.innerHTML = ""; // Clear the list first
+
+  items.forEach((item) => {
+    const card = document.createElement("li");
+    card.classList.add("card");
+
+    const h3 = document.createElement("h3");
+    h3.textContent = item.name;
+
+    const p = document.createElement("p");
+    p.classList.add("price");
+    p.textContent = `${item.price} EGP`;
+
+    card.appendChild(h3);
+    card.appendChild(p);
+
+    list.appendChild(card);
+  });
 }
 
 /**
@@ -87,3 +108,31 @@ export function renderList(items) {
  */
 
 // TODO: write wireForm here.
+const items = [];
+
+export function wireForm() {
+  const form = document.getElementById("product-form");
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const { name, price } = readForm();
+    const error = document.getElementById("error");
+    const priceValue = document.getElementById("price").value.trim();
+
+    if (!name) {
+      error.textContent = "Give the product a name.";
+      return;
+    }
+
+    if (priceValue === "" || !Number.isFinite(price) || price <= 0) {
+      error.textContent = "Give the product a price.";
+      return;
+    }
+
+    error.textContent = "";
+    items.push({ name, price });
+    renderList(items);
+    clearForm();
+  });
+}
